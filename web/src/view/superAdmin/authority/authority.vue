@@ -8,10 +8,6 @@
           icon="plus"
           @click="addAuthority(0)"
         >新增角色</el-button>
-        <el-icon
-          class="cursor-pointer"
-          @click="toDoc('https://www.bilibili.com/video/BV1kv4y1g7nT?p=8&vd_source=f2640257c21e3b547a790461ed94875e')"
-        ><VideoCameraFilled /></el-icon>
       </div>
       <el-table
         :data="tableData"
@@ -243,7 +239,8 @@ const searchInfo = ref({})
 const getTableData = async() => {
   const table = await getAuthorityList({ page: page.value, pageSize: pageSize.value, ...searchInfo.value })
   if (table.code === 0) {
-    tableData.value = table.data.list
+    console.log(table.data.list )
+    tableData.value = table.data
     total.value = table.data.total
     page.value = table.data.page
     pageSize.value = table.data.pageSize

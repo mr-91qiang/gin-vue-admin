@@ -363,3 +363,10 @@ fmt.Println(decodeBytes, err)
 ## 10. 商用注意事项
 
 如果您将此项目用于商业用途，请遵守Apache2.0协议并保留作者技术支持声明。
+
+
+docker run -d --restart=always --name mysql \
+-v /home/mysql/data:/var/lib/mysql \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=123456 \
+mysql:8

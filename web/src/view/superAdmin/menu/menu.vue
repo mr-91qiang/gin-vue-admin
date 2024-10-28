@@ -536,7 +536,7 @@ const searchInfo = ref({})
 const getTableData = async() => {
   const table = await getMenuList({ page: page.value, pageSize: pageSize.value, ...searchInfo.value })
   if (table.code === 0) {
-    tableData.value = table.data.list
+    tableData.value = table.data
     total.value = table.data.total
     page.value = table.data.page
     pageSize.value = table.data.pageSize
@@ -676,6 +676,7 @@ const enterDialog = async() => {
   menuForm.value.validate(async valid => {
     if (valid) {
       let res
+      form.value.parentId = parseInt(form.value.parentId)
       if (isEdit.value) {
         res = await updateBaseMenu(form.value)
       } else {
@@ -741,7 +742,7 @@ const isEdit = ref(false)
 const dialogTitle = ref('新增菜单')
 const addMenu = (id) => {
   dialogTitle.value = '新增菜单'
-  form.value.parentId = String(id)
+  form.value.parentId = parseInt(id)
   isEdit.value = false
   setOptions()
   dialogFormVisible.value = true
