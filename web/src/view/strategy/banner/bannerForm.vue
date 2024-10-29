@@ -13,7 +13,10 @@
           <el-date-picker v-model="formData.released" type="date" placeholder="选择日期" :clearable="true"></el-date-picker>
        </el-form-item>
         <el-form-item label="图片:" prop="img">
-          <el-input v-model="formData.img" :clearable="true"  placeholder="请输入图片" />
+          <upload-common
+              :image-common="formData.img"
+          />
+<!--          <el-input v-model="formData.img" :clearable="true"  placeholder="请输入图片" />-->
        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="save">保存</el-button>
@@ -52,6 +55,7 @@ const formData = ref({
             jumpUrl: '',
             released: new Date(),
             img: '',
+
         })
 // 验证规则
 const rule = reactive({

@@ -123,6 +123,9 @@
               <el-date-picker v-model="formData.released" type="date" style="width:100%" placeholder="选择日期" :clearable="true"  />
             </el-form-item>
             <el-form-item label="图片:"  prop="img" >
+              <upload-common
+                  :image-common="formData.img"
+              />
               <el-input v-model="formData.img" :clearable="true"  placeholder="请输入图片" />
             </el-form-item>
           </el-form>
@@ -157,9 +160,9 @@ import {
   findBanner,
   getBannerList
 } from '@/api/strategy/banner'
-
+import UploadCommon from '@/components/upload/common.vue'
 // 全量引入格式化工具 请按需保留
-import { getDictFunc, formatDate, formatBoolean, filterDict ,filterDataSource, returnArrImg, onDownloadFile } from '@/utils/format'
+import { getDictFunc, formatDate, formatBoolean, filterDict, onDownloadFile } from '@/utils/format'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref, reactive } from 'vue'
 
